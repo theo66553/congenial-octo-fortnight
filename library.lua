@@ -69,7 +69,7 @@
 
 -- library init
 	local library = {
-		directory = "blackwing",
+		directory = "Atlanta",
 		folders = {
 			"/fonts",
 			"/configs",
@@ -107,12 +107,12 @@
 		preset = {
 			["outline"] = hex("#0A0A0A"), -- 
 			["inline"] = hex("#2D2D2D"), --
-			["accent"] = hex("#e68080"), --
+			["accent"] = hex("#6078BE"), --
 			["high_contrast"] = hex("#141414"),
 			["low_contrast"] = hex("#1E1E1E"),
 			["text"] = hex("#B4B4B4"),
 			["text_outline"] = rgb(0, 0, 0),
-			["glow"] = hex("#e68080"), 
+			["glow"] = hex("#6078BE"), 
 		},
 
 		utility = {
@@ -1201,7 +1201,7 @@
 
 				local section = setmetatable(items, library)
 				items.label = section:label({name = "Player: "})
-				items.slider = section:slider({name = "Health", custom = rgb(255, 0, 0), min = 0, max = 100, default = 50, input = true})
+				items.slider = section:slider({name = "Health", custom = rgba(0, 255, 0), min = 0, max = 100, default = 50, input = true})
 				
 				library:create( "UIStroke" , {
 					Parent = items.InfoTitle
@@ -1528,7 +1528,7 @@
 
 			-- main window
 				local main_window = library:panel({
-					name = properties and properties.name or "blackwing.tech | ", 
+					name = properties and properties.name or "Atlanta | ", 
 					size = dim2(0, 604, 0, 628),
 					position = dim2(0, (camera.ViewportSize.X / 2) - 302 - 96, 0, (camera.ViewportSize.Y / 2) - 421 - 12),
 					image = "rbxassetid://98823308062942",
@@ -1633,11 +1633,11 @@
 					image = "rbxassetid://115194686863276",
 				})
 
-				local watermark = library:watermark({default = os.date('blackwing.tech |  - %b %d %Y - %H:%M:%S')})  
+				local watermark = library:watermark({default = os.date('Atlanta |  - %b %d %Y - %H:%M:%S')})  
 
 				task.spawn(function()
 					while task.wait(1) do 
-						watermark.change_text(os.date('blackwing.tech - Beta - %b %d %Y - %H:%M:%S'))
+						watermark.change_text(os.date('Atlanta - Beta - %b %d %Y - %H:%M:%S'))
 					end 
 				end) 
 
@@ -1828,7 +1828,7 @@
 
 		function library:watermark(options) 
 			local cfg = {
-				default = options.text or options.default or os.date('drain.lol | %b %d %Y | %H:%M')
+				default = options.text or options.default or os.date('blackwing.tech | %b %d %Y | %H:%M')
 			}
 
 			local watermark_outline = library:create("Frame", {
@@ -3616,15 +3616,15 @@
 				});
 				
 				local section = setmetatable(cfg, library)
-        section:button_holder({})
-        section:button({name = "Copy", callback = function()
-            library.copied_flag = flags[cfg.flag]
-            library.is_rainbow = flags[cfg.flag .. "_RAINBOW_FLAG"] or false
-        end})
-        section:button({name = "Paste", callback = function()
-            RainbowToggle.set(library.is_rainbow)
-            cfg.set(library.copied_flag.Color, library.copied_flag.Transparency)
-        end})
+				section:button_holder({})
+				section:button({name = "Copy", callback = function()
+					library.copied_flag = flags[cfg.flag]
+					library.is_rainbow = cfg.flag .. "_RAINBOW_FLAG"
+				end})
+				section:button({name = "Paste", callback = function()
+					RainbowToggle.set(library.is_rainbow)
+					cfg.set(library.copied_flag.Color, library.copied_flag.Transparency)
+				end})
 
 				local main_holder_inline = library:create("Frame", {
 					Parent = main_holder,
