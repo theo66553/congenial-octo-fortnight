@@ -69,7 +69,7 @@
 
 -- library init
 	local library = {
-		directory = "Atlanta",
+		directory = "blackwing",
 		folders = {
 			"/fonts",
 			"/configs",
@@ -1201,7 +1201,7 @@
 
 				local section = setmetatable(items, library)
 				items.label = section:label({name = "Player: "})
-				items.slider = section:slider({name = "Health", custom = rgba(0, 255, 0), min = 0, max = 100, default = 50, input = true})
+				items.slider = section:slider({name = "Health", custom = rgb(0, 255, 0), min = 0, max = 100, default = 50, input = true})
 				
 				library:create( "UIStroke" , {
 					Parent = items.InfoTitle
@@ -1528,7 +1528,7 @@
 
 			-- main window
 				local main_window = library:panel({
-					name = properties and properties.name or "Atlanta | ", 
+					name = properties and properties.name or "blackwing.tech | ", 
 					size = dim2(0, 604, 0, 628),
 					position = dim2(0, (camera.ViewportSize.X / 2) - 302 - 96, 0, (camera.ViewportSize.Y / 2) - 421 - 12),
 					image = "rbxassetid://98823308062942",
@@ -1633,11 +1633,11 @@
 					image = "rbxassetid://115194686863276",
 				})
 
-				local watermark = library:watermark({default = os.date('Atlanta |  - %b %d %Y - %H:%M:%S')})  
+				local watermark = library:watermark({default = os.date('blackwing.tech |  - %b %d %Y - %H:%M:%S')})  
 
 				task.spawn(function()
 					while task.wait(1) do 
-						watermark.change_text(os.date('Atlanta - Beta - %b %d %Y - %H:%M:%S'))
+						watermark.change_text(os.date('blackwing.tech - Beta - %b %d %Y - %H:%M:%S'))
 					end 
 				end) 
 
@@ -1828,7 +1828,7 @@
 
 		function library:watermark(options) 
 			local cfg = {
-				default = options.text or options.default or os.date('blackwing.tech | %b %d %Y | %H:%M')
+				default = options.text or options.default or os.date('drain.lol | %b %d %Y | %H:%M')
 			}
 
 			local watermark_outline = library:create("Frame", {
