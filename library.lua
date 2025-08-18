@@ -1637,7 +1637,7 @@
 
 				task.spawn(function()
 					while task.wait(1) do 
-						watermark.change_text(os.date('blackwing.tech - Beta - %b %d %Y - %H:%M:%S'))
+						watermark.change_text(os.date('blackwing.tech - Universal - Beta - %b %d %Y - %H:%M:%S'))
 					end 
 				end) 
 
@@ -1687,7 +1687,7 @@
 				:colorpicker({name = "Glow", color = themes.preset.glow, callback = function(color, alpha)
 					library:update_theme("glow", color)
 				end, flag = "Glow"})
-				section:slider({name = "Blur Size", flag = "Blur Size", min = 0, max = 56, default = 15, interval = 1, callback = function(int)
+				section:slider({name = "Blur Size", flag = "Blur Size", min = 0, max = 56, default = 0, interval = 1, callback = function(int)
 					if window.opened then 
 						blur.Size = int
 					end
@@ -1695,10 +1695,10 @@
 				local section = column:section({name = "Other"})
 				section:label({name = "UI Bind"})
 				:keybind({callback = window.set_menu_visibility, key = Enum.KeyCode.Insert})
-				section:toggle({name = "Keybind List", flag = "keybind_list", callback = function(bool)
+				section:toggle({name = "Keybind List", flag = "keybind_list", default = true, callback = function(bool)
 					library.keybind_list_frame.Visible = bool
 				end})
-				section:toggle({name = "Watermark", flag = "watermark", callback = function(bool)
+				section:toggle({name = "Watermark", flag = "watermark", default = true, callback = function(bool)
 					watermark.set_visible(bool)
 				end})
 				section:button_holder({})
